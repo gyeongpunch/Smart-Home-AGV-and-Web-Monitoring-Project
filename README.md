@@ -31,41 +31,6 @@
 
 - AWS SES를 통해 지정된 관리자에게 이메일로 리포트 자동 발송
 
-# 🏛️ 시스템 아키텍처 (System Architecture)
-코드 스니펫
-
-graph TD
-
-    subgraph Edge Devices
-        A[AGV - Jetson Nano]
-        B[IoT Sensor - ESP32]
-    end
-
-    subgraph Cloud - AWS
-        C[AWS IoT Core]
-        D[AWS Lambda]
-        E[AWS RDS - MySQL]
-        F[OpenAI GPT API]
-        G[AWS SES]
-        H[AWS S3]
-    end
-
-    subgraph User Interface
-        I[Web Dashboard - Vue.js]
-        J[Admin User]
-    end
-
-    A -- MQTT --> C
-    B -- MQTT --> C
-    C -- Trigger --> D
-    D -- Preprocessing & Save --> E
-    D -- Save Logs/Images --> H
-    D -- Request Report --> F
-    F -- Generate Report --> D
-    D -- Send Email --> G
-    G --> J
-    I -- Fetches Data --> E
-    J -- Monitors --> I
 # 🛠️ 기술 스택 (Tech Stack)
 | 분야 (Field) | 사용 기술 (Technology) | 선택 이유 (Reason) |
 | :--- | :--- | :--- |
